@@ -1,0 +1,46 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>{{title}}</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<nav mat-tab-nav-bar>
+  <div>
+    <a mat-tab-link
+       *ngFor="let link of lta_links"
+       [routerLink]="link.path"
+       routerLinkActive #rla="routerLinkActive"
+       [routerLinkActiveOptions]="{exact: true}"
+       [active]="rla.isActive">
+      {{link.label}}
+    </a>
+  </div>
+
+
+  <!--<div routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+    <a mat-tab-link
+       *ngFor="let link of headerLinks"
+       [routerLink]="link.path"
+       routerLinkActive #rla="routerLinkActive"
+       [routerLinkActiveOptions]="{exact: true}"
+       [active]="rla.isActive">
+      {{link.label}}
+    </a>
+  </div>-->
+
+  <div [matMenuTriggerFor]="adminMenu" *ngIf="isAdmin">
+    <mat-icon>settings</mat-icon>
+  </div>
+</nav>
+
+
+<mat-menu #adminMenu="matMenu">
+  <a mat-menu-item
+     *ngFor="let link of adminLinks"
+     [routerLink]="link.path"
+  >
+    <mat-icon>{{link.matIcon}}</mat-icon>
+    {{link.label}}
+  </a>
+</mat-menu>
+<router-outlet></router-outlet>
