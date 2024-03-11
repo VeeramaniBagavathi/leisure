@@ -15,7 +15,7 @@ public class HomeController {
 
     @GetMapping(value = "")
     public String index() {
-        return "hello Leisure Veera..";
+        return "Hello world..!";
     }
 
     @GetMapping(value = "/api/version")
